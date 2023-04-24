@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
@@ -90,8 +91,8 @@
   </div>
 </nav>
 <div class="image-container">
-<a href="Dcor.html"><img src="../imga/2.jpg" alt="picture 2 "></a>
-<a href="AFurnishing.html"><img src="../imga/3.jpg" alt="picture 3 "></a>
+<a href="Dcor.html"><img src="{% static 'image/2.jpg' %}" alt="picture 2 "></a>
+<a href="AFurnishing.html"><img src="{% static 'image/3.jpg' %}" alt="picture 3 "></a>
 </div>
 </body>
 </html>
