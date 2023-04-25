@@ -7,3 +7,7 @@ def display_index(request):
 
 def display_home(request):
     return render(request, 'home.html')
+
+def display_HomeDcor(request):
+    home_dcor_list = HomeDcor.objects.all()
+    return render(request, 'Dcor.html', {'home_dcor_list': home_dcor_list})
