@@ -35,76 +35,18 @@
   background-color: #000;
   margin-top: 10px;
 }
-.box1 {
+.box {
   width: 340px;
-  height: 400px;
+  height: 440px;
   background-color: transparent;
   border: 1px solid black;
-  padding-top: 210px;
+  padding-top: 190px;
   margin-top: 100px;
 
 }
-.box1:hover {
+.box:hover {
   transform: translate(5px, -5px);
 }
-
-.box2 {
-  width: 340px;
-  height: 400px;
-  background-color: transparent;
-  border: 1px solid black;
-  padding-top: 210px;
-  margin-top: 100px;
-}
-.box2:hover {
-  transform: translate(5px, -5px);
-}
-.box3 {
-  width: 340px;
-  height: 400px;
-  background-color: transparent;
-  border: 1px solid black;
-  padding-top: 210px;
-  margin-top: 100px;
-}
-.box3:hover {
-  transform: translate(5px, -5px);
-}
-.box4 {
-  width: 340px;
-  height: 400px;
-  background-color: transparent;
-  border: 1px solid black;
-  padding-top: 210px;
-  margin-top: 100px;
-}
-.box4:hover {
-  transform: translate(5px, -5px);
-}
-.box5 {
-  width: 340px;
-  height: 400px;
-  background-color: transparent;
-  border: 1px solid black;
-  padding-top: 210px;
-  margin-top: 50px;
-}
-.box5:hover {
-  transform: translate(5px, -5px);
-}
-.box6 {
-  width: 340px;
-  height: 400px;
-  background-color: transparent;
-  border: 1px solid black;
-  padding-top: 210px;
-  margin-top: 50px;
-}
-.box6:hover {
-  transform: translate(5px, -5px);
-}
-
-
 </style>
   </head>
 <body>
@@ -138,42 +80,23 @@
   </div>
 </div>
 <div class="container-box" style="display:flex; flex-wrap: wrap; justify-content: space-between;margin-left:5%;margin-right:5%">
-<div class="box1" style="text-align:center;">
-  <p style="line-height: 2.5em;">Rank</p>
-  <p style="line-height: 2.5em;">Name</p>
-  <p style="line-height: 2em;">Ratings</p>
-  <p style="line-height: 3em;">Price</p>
+{% for row in home_dcor_list %}
+<div class="box" style="text-align:center;">
+                  <div>
+					  
+					  <p style="line-height: 1em;">Rank</p>
+                        <p>{{row.rank}}</p>
+                      <p style="line-height: 1em;">Name</p>
+                        <p>{{row.name}}</p>
+						<p style="line-height: 1em;">Ratings</p>
+                        <p>{{row.ratings}}</p>
+						  <p style="line-height: 1em;">Price</p>
+                        <p>{{row.price}}</p>
+
+				  </div>
 </div>
-<div class="box2" style="text-align:center;">
-  <p style="line-height: 2.5em;">Rank</p>
-  <p style="line-height: 2.5em;">Name</p>
-  <p style="line-height: 2em;">Ratings</p>
-  <p style="line-height: 3em;">Price</p>
-</div>
-<div class="box3" style="text-align:center;">
-  <p style="line-height: 2.5em;">Rank</p>
-  <p style="line-height: 2.5em;">Name</p>
-  <p style="line-height: 2em;">Ratings</p>
-  <p style="line-height: 3em;">Price</p>
-</div>
-<div class="box4" style="text-align:center;">
-  <p style="line-height: 2.5em;">Rank</p>
-  <p style="line-height: 2.5em;">Name</p>
-  <p style="line-height: 2em;">Ratings</p>
-  <p style="line-height: 3em;">Price</p>
-</div>
-<div class="box5" style="text-align:center;">
-  <p style="line-height: 2.5em;">Rank</p>
-  <p style="line-height: 2.5em;">Name</p>
-  <p style="line-height: 2em;">Ratings</p>
-  <p style="line-height: 3em;">Price</p>
-</div>
-<div class="box6" style="text-align:center;">
-  <p style="line-height: 2.5em;">Rank</p>
-  <p style="line-height: 2.5em;">Name</p>
-  <p style="line-height: 2em;">Ratings</p>
-  <p style="line-height: 3em;">Price</p>
-</div>
+{% endfor %}
+                    
 </div>
 <ul class="pagination pagination-lg"style="margin-left:39%">
 	<li><a href="#">&laquo;</a></li>
