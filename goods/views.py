@@ -10,12 +10,23 @@ def display_home(request):
     return render(request, 'home.html')
 
 def display_HomeDcor(request):
-    home_dcor_list = HomeDcor.objects.all()
-    return render(request, 'Dcor.html', {'home_dcor_list': home_dcor_list})
-
-def datapage1(request):
     homedcor = HomeDcor.objects.all()
-    paginator = Paginator(my_objects, 10) 
+    paginator = Paginator(homedcor, 8) 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'Dcor.html', {'page_obj': page_obj})
+
+
+
+
+
+
+
+
+
+
+# def display_HomeDcorDetail(request):
+# 	home_docr_detail=HomeDcor.objects.all()
+# 	goods_id=request.GET.get('name',1)
+# 	goods_data=HomeDecorDetail.objects.get(id=goods_id)
+#     return render(request, 'Dcor_detail.html', {'home_docr_detail': home_docr_detail})

@@ -35,18 +35,6 @@
   background-color: #000;
   margin-top: 10px;
 }
-.box {
-  width: 340px;
-  height: 440px;
-  background-color: transparent;
-  border: 1px solid black;
-  padding-top: 190px;
-  margin-top: 100px;
-
-}
-.box:hover {
-  transform: translate(5px, -5px);
-}
 </style>
   </head>
 <body>
@@ -79,34 +67,8 @@
     </ul>
   </div>
 </div>
-<div class="container-box" style="display:flex; flex-wrap: wrap; justify-content: space-between;margin-left:5%;margin-right:5%">
-{% for row in page_obj %}
-<div class="box" style="text-align:center;">
-                  <div>
-					  
-					  <p style="line-height: 1em;">Rank</p>
-                        <p>{{row.rank}}</p>
-                      <p style="line-height: 1em;">Name</p>
-                        <p>{{row.name}}</p>
-						<p style="line-height: 1em;">Ratings</p>
-                        <p>{{row.ratings}}</p>
-						  <p style="line-height: 1em;">Price</p>
-                        <p>{{row.price}}</p>
 
-				  </div>
-</div>
-{% endfor %}                 
-</div>
 
-<ul class="pagination pagination-lg" style="margin-left:40%;margin-right:5%"> 
-  {% if page_obj.has_previous %}
-    <li><a href="?page=1">&laquo; first</a></li>
-    <li><a href="?page={{ page_obj.previous_page_number }}">previous</a></li>
-  {% endif %}
 
-  {% if page_obj.has_next %}
-    <li><a href="?page={{page_obj.next_page_number }}">next</a></li>
-    <li><a href="?page={{page_obj.paginator.num_pages }}">last &raquo;</a></li>
-  {% endif %}
-</div>
+</body>
 </html>
