@@ -27,20 +27,22 @@ class Command(BaseCommand):
                     rank=row[0],
                     name=row[1],
                     ratings=row[2],
-                    price=row[3]
+                    price=row[3],
+					image=row[4]
                 )
                 table1.save()
 
-        with open(str(base_dir) + '/goods/goodfile/HomeDecorDetail.csv', newline='',encoding='ISO-8859-1') as f:
+        with open(str(base_dir) + '/goods/goodfile/HomeDcor_detail.csv', newline='',encoding='ISO-8859-1') as f:
             reader = csv.reader(f, delimiter=",")
             next(reader) # skip the header line
             for row in reader:
                 print(row)
                 table2 = HomeDecorDetail.objects.create(
-                    name=row[0],
-                    price=row[1],
-                    category=row[2],
-                    image=row[3]
+					rank=row[0],
+                    name=row[1],
+                    price=row[2],
+                    category=row[3],
+					image=row[4]
                 )
                 table2.save()
 
@@ -53,20 +55,22 @@ class Command(BaseCommand):
                     rank=row[0],
                     name=row[1],
                     ratings=row[2],
-                    price=row[3]
+                    price=row[3],
+					image=row[4]
                 )
                 table3.save()
 
-        with open(str(base_dir) + '/goods/goodfile/HomeFurnishingDetail.csv', newline='',encoding='ISO-8859-1') as f:
+        with open(str(base_dir) + '/goods/goodfile/HomeFurnishing_details.csv', newline='',encoding='ISO-8859-1') as f:
             reader = csv.reader(f, delimiter=",")
             next(reader) # skip the header line
             for row in reader:
                 print(row)
                 table4 = HomeFurnishingDetail.objects.create(
-                    name=row[0],
-                    price=row[1],
-                    category=row[2],
-                    image=row[3]
+					rank=row[0],
+                    name=row[1],
+                    price=row[2],
+                    category=row[3],
+					image=row[4],
                 )
                 table4.save()
         print("data parsed successfully")
