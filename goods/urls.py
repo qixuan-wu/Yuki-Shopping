@@ -4,7 +4,6 @@ from .models import HomeDecorDetail, HomeDcor
 from account.views import register, login_view
 
 
-app_name = 'goods'
 
 urlpatterns = [
     path('', views.display_index,name='display_index'),
