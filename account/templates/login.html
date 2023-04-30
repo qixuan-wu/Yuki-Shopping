@@ -69,11 +69,14 @@
     <div class="container">
         <img src="../imga/1.jpg" alt="picture 1">
     </div>
-    <form action="" class="login">
-        <p>Create</p>
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <input type="submit" class="btn" value="Creat">
+    <form method="post" class="login" ">
+        {% csrf_token %}
+		<h2 style="color:red;">{{msg}}</h2>
+        <p>Login</p>
+         <input type="text" name="username" placeholder="Username">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="password1" placeholder="Password">
+        <button type="submit" class="btn">Login</button>
     </form>
 </body>
 </html>

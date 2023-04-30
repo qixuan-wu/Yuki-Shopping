@@ -28,7 +28,8 @@ class Command(BaseCommand):
                     name=row[1],
                     ratings=row[2],
                     price=row[3],
-					image=row[4]
+					image=row[4],
+					quantity=row[5]
                 )
                 table1.save()
 
@@ -42,7 +43,8 @@ class Command(BaseCommand):
                     name=row[1],
                     price=row[2],
                     category=row[3],
-					image=row[4]
+					image=row[4],
+					quantity=row[5]
                 )
                 table2.save()
 
@@ -56,7 +58,8 @@ class Command(BaseCommand):
                     name=row[1],
                     ratings=row[2],
                     price=row[3],
-					image=row[4]
+					image=row[4],
+					quantity=row[5]
                 )
                 table3.save()
 
@@ -71,6 +74,7 @@ class Command(BaseCommand):
                     price=row[2],
                     category=row[3],
 					image=row[4],
+					quantity=row[5]
                 )
                 table4.save()
         print("data parsed successfully")
