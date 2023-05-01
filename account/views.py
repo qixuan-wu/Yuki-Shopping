@@ -27,19 +27,20 @@ def register(request):
 
 def login_view(request):
     if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            user = authenticate( username=username, password=password)
-            if user :
-                login(request, user)
-                return redirect('/home')
-            else:
-                msg='Invalid login credentials'
-                return redirect('login')
-    return render(request, 'login.html')
-
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user('')
+            loin(request, user)
+            messages.success(request,'successful login')
+            return redirect('display_home')
+        else:
+            msg = 'Invalid login credentials'
+            messages.error(request, msg)
+    else:
+        form = AuthenticationForm(request)
+    return render(request, 'login.html', {'form': form})
 
 
 def logout_view(request):
     logout(request)
-    return redirect('/login')
+    return redirect(request.META.get('HTTP_REFERER',reverse('display_home')))
