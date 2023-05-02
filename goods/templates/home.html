@@ -67,12 +67,25 @@
     <div class="navbar-header">
       <a class="navbar-brand navbar-brand-title">Yuki Shopping</a>
     </div>
-    <ul class="nav navbar-nav  navbar-right">
-     <li><a href="{% url 'register' %}">><span class="glyphicon glyphicon-user"></span> create account </a></li>
-      <li><a href="{% url 'login_view' %}"><span class="glyphicon glyphicon-log-in"></span> Log in </a></li>
-    </ul>
+    <div class="collapse navbar-collapse" style='margin-right:15%; margin-top:1%'>
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <li><a>Welcome, {{ user.username }}!</a></li>
+          <li>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
   </div>
 </nav>
+
 
 <nav class="navbar navbar-twotile" role="navigation">
           <form class="navbar-form navbar-search" role="search">
@@ -93,5 +106,6 @@
 <a href="/Dcor"><img src="{% static 'image/2.jpg' %}" alt="picture 2 "></a>
 <a href="/AFurnishing"><img src="{% static 'image/3.jpg' %}" alt="picture 3 "></a>
 </div>
+
 </body>
 </html>

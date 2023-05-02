@@ -21,7 +21,7 @@ def display_HomeDcor(request):
         homedcor_list = homedcor_list.filter(price__gte=min_price)
     if max_price:
         homedcor_list = homedcor_list.filter(price__lte=max_price)
-    paginator = Paginator(homedcor_list, 9)
+    paginator = Paginator(homedcor_list, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'Dcor.html', {'page_obj': page_obj})
