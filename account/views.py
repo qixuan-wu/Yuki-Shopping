@@ -30,7 +30,7 @@ def login_view(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            loin(request, user)
+            login(request, user)
             messages.success(request,'successful login')
             return redirect('display_home')
         else:

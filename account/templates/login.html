@@ -73,12 +73,9 @@
         {% csrf_token %}
 		<h2 style="color:red;">{{msg}}</h2>
         <p>Login</p>
-         <input type="text" name="username" placeholder="Username">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password1" placeholder="Password">
-		<a href="{% url 'display_home' %}">
-        <button type="submit" class="btn">Login</button>
-		</a>
+         {{ form.as_p }}
+        <input type="submit" value="Login">
     </form>
+
 </body>
 </html>
