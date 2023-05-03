@@ -1,6 +1,12 @@
-from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
+
+
+
 
 
 class HomeDcor(models.Model):
@@ -51,90 +57,18 @@ class HomeFurnishingDetail(models.Model):
         return f'{self.rank}, {self.name}, {self.price}, {self.category}, {self.image}, {self.quantity}'
 
 
-class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
-    password = models.CharField(max_length=200, null=True)
+class cart(models.Model):
+    id=models.IntegerField(primary_key=True)
+    name = models.TextField()
+    quantity = models.IntegerField(default=False)
+    price = models.DecimalField(max_digits=8, decimal_places=2)
+    add_to_cart = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.name
+        return f'{self.id}, {self.name}, {self.quantity}, {self.price}'
 
-
-class Product(models.Model):
-    name = models.CharField(max_length=200, null=True)
-    price = models.FloatField()
-    digital = models.BooleanField(default=False, null=True, blank=False)
-
-    def __str__(self):
-        return self.name
-
-
-class Order(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
-    date_order = models.DateTimeField(auto_now_add=True)
-    complete = models.BooleanField(default=False, null=True, blank=False)
-    transaction_id = models.CharField(max_length=200, null=True)
-
-    def __str__(self):
-        return str(self.id)
-
-
-class OrderItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
-    quantity = models.IntegerField(default=0, null=True, blank=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-
-class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, blank=True, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null=True)
-    address = models.CharField(max_length=200, null=True)
-    city = models.CharField(max_length=200, null=True)
-    state = models.CharField(max_length=200, null=True)
-    zipcode = models.CharField(max_length=200, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.address
+    def total_price(self):
+        return sum(item.quantity * item.name.price for item in self.cart_items.all())
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class cart(models.Model):
-#     rank = models.IntegerField(primary_key=True)
-#     name = models.FloatField()
-#     price = models.TextField()
-#     add_to_chart = models.BooleanField(default=False)
-#     quantity = models.PositiveIntegerField(default=1)
-#     def __str__(self):
-#         return f'{self.rank}, {self.name}, {self.price}, {self.add_to_chart}, {self.quantity}'

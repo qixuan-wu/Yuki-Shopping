@@ -41,10 +41,22 @@
         <div class="navbar-header">
           <a class="navbar-brand navbar-brand-title">Yuki Shopping</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/create"><span class="glyphicon glyphicon-user"></span> create account</a></li>
-          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-        </ul>
+     <div class="collapse navbar-collapse" style='margin-right:15%; margin-top:1%'>
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <li><a>Welcome, {{ user.username }}!</a></li>
+          <li>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
       </div>
     </nav>
     <div class="navbar navbar-twotile" role="navigation">
@@ -69,18 +81,18 @@
         <p class="name">Deploy name: {{detail.name}}</p>
         <p class="price">Price: {{detail.price}},</p>
         <p class="category">Category: {{detail.category}}</p>
-        <img src="{{detail.image}}" alt="{{detail.image}}" >
+        <img src="{{ detail.image }}" alt="{{detail.image}}" >
         <!-- 图片传不进去 -->
       </div>
-    {% endfor %}
+ {% endfor %}
 
-
-<form method="post">
+<form method="POST" action="{% url 'cart' %}">
     {% csrf_token %}
-    {{ form }}
+    <input type="hidden" name="name" value="{{ detail.name }}">
+    <input type="hidden" name="price" value="{{ detail.price }}">
+    <input type="number" name="quantity" value="1">
     <button type="submit">Add to cart</button>
 </form>
-
 
   </body>
 </html>

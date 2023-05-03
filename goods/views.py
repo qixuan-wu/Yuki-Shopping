@@ -1,7 +1,13 @@
 from django.core.paginator import Paginator
-from .models import HomeDcor, HomeFurnishing, HomeDecorDetail, HomeFurnishingDetail
-from django.shortcuts import render, get_object_or_404
+from .models import HomeDcor, HomeFurnishing, HomeDecorDetail, HomeFurnishingDetail, cart
+from django.shortcuts import render, get_object_or_404,redirect
 from django.db.models import Q
+from decimal import Decimal
+from django.conf import settings
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 def display_index(request):
     return render(request, 'index.html')
@@ -34,4 +40,39 @@ def display_HomeDcorDetail(request, detail_rank):
     return render(request, 'Dcor_detail.html', {'detail': detail, 'sightdetails': sightdetails})
 
 
+@login_required
+def add_to_cart(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        price = float(request.POST['price'].replace(',', '.'))
+        quantity = int(request.POST.get('quantity'))
+        # 从数据库中查询是否存在该购物车项，如果不存在，则创建一个新的购物车项
+        cart_item, created = cart.objects.get_or_create(
+            name=name,
+            price=price,
+            defaults={'quantity': quantity},
+        )
+        if not created:
+            cart_item.quantity=quantity
+            cart_item.save()
+        cart_list=cart.objects.all()
+        total=sum([item.price*item.quantity for item in cart_list])
+        return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'new_product':{'name':name,}})
+    else:
+        cart_list=cart.objects.all()
+        total=sum([item.price*item.quantity for item in cart_list])
+        return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'total':total})
+
+
+
+@login_required
+def remove_from_cart(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        price = float(request.POST['price'].replace(',', '.'))
+        cart_item= cart.objects.get(name=name,price=price)
+        cart_item.delete()
+    cart_list=cart.objects.all()
+    total=sum([item.price*item.quantity for item in cart_list])
+    return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'total':total})
 

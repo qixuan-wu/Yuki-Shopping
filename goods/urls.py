@@ -1,7 +1,7 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 from .models import HomeDecorDetail, HomeDcor 
-from account.views import register, login_view
+import django.contrib.auth.urls
 
 
 
@@ -10,12 +10,10 @@ urlpatterns = [
     path('home/', views.display_home,name='display_home'),
     path('Dcor/', views.display_HomeDcor,name='display_HomeDcor'),
     path('Dcordetail/<str:detail_rank>',views.display_HomeDcorDetail,name='homedcordetail'),
-	path('register/', register, name='register'),
-	path('login_view/', login_view, name='login_view'),
+    path('add-to-cart/<int:rank>/', views.add_to_cart, name='add_to_cart'),
+    path('remove-from-cart/<int:detail_rank>/', views.remove_from_cart, name='remove_from_cart'),
+    path('cart/', views.add_to_cart, name='cart'),
 
-
-
-	# path('shoppingcar',views.add_to_cart,name='add_to_cart')
 ]
 
 
