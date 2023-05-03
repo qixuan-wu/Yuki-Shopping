@@ -64,15 +64,12 @@ def add_to_cart(request):
         return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'total':total})
 
 
-
 @login_required
-def remove_from_cart(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        price = float(request.POST['price'].replace(',', '.'))
-        cart_item= cart.objects.get(name=name,price=price)
-        cart_item.delete()
-    cart_list=cart.objects.all()
-    total=sum([item.price*item.quantity for item in cart_list])
-    return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'total':total})
+def remove_from_cart(request,cart_item_id):
+    cart_item_id = int(cart_item_id)
+
+    cart_list = get_object_or_404(cart, id=cart_item_id)
+    cart_list.delete()
+    print(cart_item_id)
+    return redirect('cart')
 
