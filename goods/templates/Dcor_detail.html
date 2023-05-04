@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
   <head>
@@ -75,7 +76,6 @@
         <p class="price">Price: {{detail.price}},</p>
         <p class="category">Category: {{detail.category}}</p>
         <img src="{{ detail.image }}" alt="{{detail.image}}" >
-        <!-- 图片传不进去 -->
       </div>
  {% endfor %}
 

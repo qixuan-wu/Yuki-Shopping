@@ -96,22 +96,25 @@
   </div>
 </div>
 <div class="container-box" style="display:flex; flex-wrap: wrap; justify-content: space-between;margin-left:5%;margin-right:5%">
-  {% for row in page_obj %}
-    <div class="box" >
-      <img src="{{ row.ratings }}" alt="{{ row.ratings }}" style="margin-top:-180px; margin-left:14px; ">
-      <p>Rank: {{ row.rank }}</p>
-      <p>Name: <a href="{% url 'homedcordetail' detail_rank=row.rank %}">{{ row.name }}</a></p>
-      <p>Ratings: {{ row.price }}</p>
-      <p>Price: {{ row.image }}</p>
-
-	  </form>
+ {% if page_obj %}
+    {% for row in page_obj %}
+      <div class="box" >
+        <img src="{{ row.ratings }}" alt="{{ row.ratings }}" style="margin-top:-180px; margin-left:14px; ">
+        <p>Rank: {{ row.rank }}</p>
+        <p>Name: <a href="{% url 'homedcordetail' detail_rank=row.rank %}">{{ row.name }}</a></p>
+        <p>Ratings: {{ row.price }}</p>
+        <p>Price: {{ row.image }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div style="display:flex;margin-left:40%;margin-top:15%">
+      <h1>No results found.</h1>
+	  </div>
+	   <div style="display:flex;margin-left:65%;margin-top:1%">
+	  <h4><a href="{% url 'display_HomeDcor' %}">Return</a></h4>
     </div>
-  {% endfor %}
+  {% endif %}
 </div>
-
-
-
-
 
 </div>
 </div>

@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['word-otherword.herokuapp.com','localhost', 'jumpclaudia-rainbowcake-8000.codio-box.uk']
 
+CSRF_TRUSTED_ORIGINS = ['https://jumpclaudia-rainbowcake-8000.codio-box.uk']
 
 # Application definition
 
@@ -131,6 +132,5 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'goods/static'),
 ]
 
-
-
+STATIC_URL = '/static/'
 

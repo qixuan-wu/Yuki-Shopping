@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
 
 
+
 def register(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -14,15 +15,17 @@ def register(request):
         password2 = request.POST.get('password2')
         email = request.POST.get('email')
         if password1 != password2:
-            msg='Inconsistent passwords'
-            return render(request,'create.html')
+            error_message = 'Inconsistent passwords'
+            return render(request, 'create.html', {'error_message': error_message})
         elif username == '':
-            msg='Username cannot be empty'
-            return render(request,'create.html')
+            error_message = 'Username cannot be empty'
+            return render(request, 'create.html', {'error_message': error_message})
         cuser = User.objects.create_user(username=username, password=password1, email=email)
         cuser.save()
-        return redirect('display_home')
+        return redirect('login')
     return render(request, 'create.html')
+
+
 
 
 def login_view(request):
@@ -32,7 +35,7 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
             messages.success(request,'successful login')
-            return redirect('display_home')
+            return redirect('display_HomeDcor')
         else:
             msg = 'Invalid login credentials'
             messages.error(request, msg)
@@ -43,4 +46,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect(reverse('display_home'))
+    return redirect(reverse('display_HomeDcor'))

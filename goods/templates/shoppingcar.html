@@ -7,6 +7,9 @@
 <body>
 
 <h1>Shopping Cart</h1>
+{% if error_message %}
+    <p>{{ error_message }}</p>
+	{% else %}
 <table>
   <tr>
     <th>Product Name</th>
@@ -26,8 +29,10 @@
 </tr>
   {% endfor %}
 </table>
+{% endif %}
 
+<h4><a href="{% url 'cart' %}">updata total price</a></h4>
 <p>Total:{{ total}}</p>
-
+<h4><a href="{% url 'display_HomeDcor' %}">Return</a></h4>
 </body>
 </html>
