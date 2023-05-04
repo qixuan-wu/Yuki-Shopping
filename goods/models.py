@@ -28,9 +28,12 @@ class HomeDecorDetail(models.Model):
     category = models.TextField()
     image = models.TextField()
     quantity = models.TextField()
+    latitude = models.FloatField()
+    longitude = models.FloatField()
 
     def __str__(self):
-        return f'{self.rank}, {self.name}, {self.price}, {self.category}, {self.image}, {self.quantity}'
+        return f'{self.rank}, {self.name}, {self.price}, {self.category}, {self.image}, {self.quantity},{self.latitude},{self.longitude}'
+
 
 
 

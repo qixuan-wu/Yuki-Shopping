@@ -38,12 +38,15 @@ class Command(BaseCommand):
                 print(row)
                 table2 = HomeDecorDetail.objects.create(
 					rank=row[0],
-                    name=row[1],
-                    price=row[2],
-                    category=row[3],
+					name=row[1],
+					price=row[2],
+					category=row[3],
 					image=row[4],
-					quantity=row[5]
-                )
+					quantity=row[5],
+					latitude=float(row[6]),
+					longitude=float(row[7])
+				)
+
                 table2.save()
 
         print("data parsed successfully")
