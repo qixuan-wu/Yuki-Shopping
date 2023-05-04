@@ -5,10 +5,8 @@ from django.db.models import Q
 from decimal import Decimal
 from django.conf import settings
 from django.views.decorators.http import require_POST
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib import messages
-
-
 
 def display_index(request):
     return render(request, 'index.html')
@@ -108,4 +106,32 @@ def remove_from_cart(request, cart_item_id):
     except ValueError:
         error_message = "Invalid cart item ID."
         return render(request, 'cart.html', {'error_message': error_message})
+
+
+
+
+@user_passes_test(lambda user: user.is_superuser)
+def home_list(request):
+    low_prices = 0
+    middle_prices = 0
+    high_prices = 0
+
+
+    for home in HomeDcor.objects.all():
+        if '0' <= str(home.price) <= '15':
+            low_prices += 1
+        elif '16' <= str(home.price) <= '40':
+            middle_prices += 1
+        else:
+            high_prices += 1
+
+    return render(request, 'Chart.html', {'low_prices': low_prices, 
+	'middle_prices': middle_prices, 
+	'high_prices': high_prices, })
+
+
+
+
+
+
 
