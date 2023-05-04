@@ -7,7 +7,6 @@ import django.contrib.auth.urls
 
 urlpatterns = [
     path('', views.display_index,name='display_index'),
-    path('home/', views.display_home,name='display_home'),
     path('Dcor/', views.display_HomeDcor,name='display_HomeDcor'),
     path('Dcordetail/<str:detail_rank>',views.display_HomeDcorDetail,name='homedcordetail'),
     path('add-to-cart/<int:rank>/', views.add_to_cart, name='add_to_cart'),

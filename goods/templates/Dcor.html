@@ -90,9 +90,8 @@
 </form>
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/Home">Home</a></li>
-      <li><a href="/Dcorl">Dcor</a></li>
-      <li><a href="/Furnishing">Furnishing</a></li>
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/Dcor">Dcor</a></li>
     </ul>
   </div>
 </div>
@@ -104,9 +103,12 @@
       <p>Name: <a href="{% url 'homedcordetail' detail_rank=row.rank %}">{{ row.name }}</a></p>
       <p>Ratings: {{ row.price }}</p>
       <p>Price: {{ row.image }}</p>
+
+	  </form>
     </div>
   {% endfor %}
 </div>
+
 
 
 

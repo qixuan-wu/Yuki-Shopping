@@ -1,5 +1,5 @@
 from django.core.paginator import Paginator
-from .models import HomeDcor, HomeFurnishing, HomeDecorDetail, HomeFurnishingDetail, cart
+from .models import HomeDcor, HomeDecorDetail, cart
 from django.shortcuts import render, get_object_or_404,redirect
 from django.db.models import Q
 from decimal import Decimal
@@ -12,21 +12,12 @@ from django.contrib import messages
 def display_index(request):
     return render(request, 'index.html')
 
-def display_home(request):
-    return render(request, 'home.html')
-
 
 def display_HomeDcor(request):
     query = request.GET.get('query')
-    min_price = request.GET.get('min_price')
-    max_price = request.GET.get('max_price')
     homedcor_list = HomeDcor.objects.all()
     if query:
         homedcor_list = homedcor_list.filter(Q(rank__icontains=query) | Q(name__icontains=query))
-    if min_price:
-        homedcor_list = homedcor_list.filter(price__gte=min_price)
-    if max_price:
-        homedcor_list = homedcor_list.filter(price__lte=max_price)
     paginator = Paginator(homedcor_list, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -60,8 +51,9 @@ def add_to_cart(request):
         return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'new_product':{'name':name,}})
     else:
         cart_list=cart.objects.all()
-        total=sum([item.price*item.quantity for item in cart_list])
+        total=sum([item.price * item.quantity for item in cart_list])
         return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'total':total})
+
 
 
 @login_required
@@ -72,4 +64,5 @@ def remove_from_cart(request,cart_item_id):
     cart_list.delete()
     print(cart_item_id)
     return redirect('cart')
+
 
