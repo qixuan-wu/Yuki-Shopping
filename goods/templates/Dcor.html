@@ -92,9 +92,13 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">Home</a></li>
       <li><a href="/Dcor">Dcor</a></li>
+	  <li><a href="/cart">Shopping cart</a></li>
+	  <li><a href="{% url 'home_list' %}">Check price tracking</a></li>
     </ul>
   </div>
 </div>
+
+
 <div class="container-box" style="display:flex; flex-wrap: wrap; justify-content: space-between;margin-left:5%;margin-right:5%">
  {% if page_obj %}
     {% for row in page_obj %}
@@ -115,8 +119,6 @@
     </div>
   {% endif %}
 </div>
-
-<h4><a href="{% url 'home_list' %}">Check price tracking</a></h4>
 
 </div>
 </div>

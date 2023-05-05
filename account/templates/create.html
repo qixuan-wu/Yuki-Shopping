@@ -15,7 +15,6 @@
             font-family: Arial, sans-serif;
         }
         body {
-            background: url(./wallpaper.jpg) no-repeat;
             background-size: cover;
             background-attachment: fixed;
             display: flex;
@@ -68,17 +67,18 @@
 </head>
 <body>
     <form method="post" class="register">
-        {% csrf_token %}
-		{% if error_message %}
-		<div class="alert alert-danger">{{ error_message }}</div>
-		{% endif %}
-        <p>Register</p>
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password1" placeholder="Password">
-        <input type="password" name="password2" placeholder="Confirm Password">
-        <input type="submit" class="btn" value="Register">       
-    </form>
+    {% csrf_token %}
+    {% if error_message %}
+    <div class="alert alert-danger">{{ error_message }}</div>
+    {% endif %}
+    <p>Register</p>
+    <input type="text" name="username" placeholder="Username">
+    <input type="text" name="email" placeholder="Email">
+    <input type="password" name="password1" placeholder="Password">
+    <input type="password" name="password2" placeholder="Confirm Password">
+    <input type="submit" class="btn" value="Register">       
+</form>
+
 </body>
 </html>
 

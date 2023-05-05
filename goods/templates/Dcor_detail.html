@@ -69,11 +69,13 @@
     </nav>
 
       <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="/Dcor">Dcor</a></li>
-        </ul>
-      </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/Dcor">Dcor</a></li>
+	  <li><a href="/cart">Shopping cart</a></li>
+	  <li><a href="{% url 'home_list' %}">Check price tracking</a></li>
+    </ul>
+  </div>
     </div>
     <h2>Sightings via Radio Device</h2>
     {% for detail in sightdetails %}

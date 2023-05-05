@@ -2,37 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>cart</title>
+    <title>Shopping Cart</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            text-align: center;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #333;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+            background-color: #ddd;
+        }
+        
+        .btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #555;
+        }
+        
+        .total {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
 <h1>Shopping Cart</h1>
 {% if error_message %}
     <p>{{ error_message }}</p>
-	{% else %}
-<table>
-  <tr>
-    <th>Product Name</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Action</th>
-  </tr>
-  {% for item in cart_list %}
-<tr>
-  <td>{{ item.name }}</td>
-  <td>{{ item.price }}</td>
-  <td>{{ item.quantity }}</td>
- <td>
-  <a href="{% url 'remove_from_cart' cart_item_id=item.id %}">Remove</a>
-  {% csrf_token %}
-</td>
-</tr>
-  {% endfor %}
-</table>
+{% else %}
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+        </tr>
+        {% for item in cart_list %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>
+                    <a href="{% url 'remove_from_cart' cart_item_id=item.id %}">Remove</a>
+                    {% csrf_token %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endif %}
 
-<h4><a href="{% url 'cart' %}">updata total price</a></h4>
-<p>Total:{{ total}}</p>
-<h4><a href="{% url 'display_HomeDcor' %}">Return</a></h4>
+<div class="total">
+    <h2><p>Total: {{ total }}</p></h2>
+    <a href="{% url 'cart' %}" class="btn">Update Total Price</a>
+    <a href="{% url 'display_HomeDcor' %}" class="btn">Return</a>
+</div>
+
 </body>
 </html>
+

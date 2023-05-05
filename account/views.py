@@ -1,11 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse
-
 
 
 def register(request):
@@ -14,18 +12,43 @@ def register(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
         email = request.POST.get('email')
+        
+        # Check if username already exists
+        if User.objects.filter(username=username).exists():
+            error_message = 'This username is already taken'
+            return render(request, 'create.html', {'error_message': error_message})
+
         if password1 != password2:
             error_message = 'Inconsistent passwords'
             return render(request, 'create.html', {'error_message': error_message})
-        elif username == '':
+        elif not username:
             error_message = 'Username cannot be empty'
             return render(request, 'create.html', {'error_message': error_message})
+        
         cuser = User.objects.create_user(username=username, password=password1, email=email)
         cuser.save()
         return redirect('login')
+    
     return render(request, 'create.html')
 
 
+
+# def register(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password1 = request.POST.get('password1')
+#         password2 = request.POST.get('password2')
+#         email = request.POST.get('email')
+#         if password1 != password2:
+#             error_message = 'Inconsistent passwords'
+#             return render(request, 'create.html', {'error_message': error_message})
+#         elif username == '':
+#             error_message = 'Username cannot be empty'
+#             return render(request, 'create.html', {'error_message': error_message})
+#         cuser = User.objects.create_user(username=username, password=password1, email=email)
+#         cuser.save()
+#         return redirect('login')
+#     return render(request, 'create.html')
 
 
 def login_view(request):
