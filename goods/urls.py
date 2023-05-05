@@ -15,7 +15,7 @@ urlpatterns = [
 	path('Chart/', views.home_list, name='home_list'),
 	path('order/', views.display_order, name='oder'),
 	path('error/',views.home_list, name='error'),
-
+    
 ]
 
 

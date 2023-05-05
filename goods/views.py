@@ -33,28 +33,6 @@ def display_HomeDcorDetail(request, detail_rank):
     sightdetails = HomeDecorDetail.objects.filter(rank=detail_rank)
     return render(request, 'Dcor_detail.html', {'detail': detail, 'sightdetails': sightdetails})
 
-# @login_required
-# def add_to_cart(request):
-#     if request.method == 'POST':
-#         name = request.POST['name']
-#         price = float(request.POST['price'].replace(',', '.'))
-#         quantity = int(request.POST.get('quantity'))
-#         # 从数据库中查询是否存在该购物车项，如果不存在，则创建一个新的购物车项
-#         cart_item, created = cart.objects.get_or_create(
-#             name=name,
-#             price=price,
-#             defaults={'quantity': quantity},
-#         )
-#         if not created:
-#             cart_item.quantity=quantity
-#             cart_item.save()
-#         cart_list=cart.objects.all()
-#         total=sum([item.price*item.quantity for item in cart_list])
-#         return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'new_product':{'name':name,}})
-#     else:
-#         cart_list=cart.objects.all()
-#         total=sum([item.price * item.quantity for item in cart_list])
-#         return render(request, 'shoppingcar.html',{'cart_list':cart_list, 'total':total})
 
 @login_required
 def add_to_cart(request):
@@ -85,15 +63,6 @@ def add_to_cart(request):
         total=sum([item.price * item.quantity for item in cart_list])
         return render(request, 'shoppingcar.html', {'cart_list': cart_list, 'total': total})
 
-
-# @login_required
-# def remove_from_cart(request,cart_item_id):
-#     cart_item_id = int(cart_item_id)
-
-#     cart_list = get_object_or_404(cart, id=cart_item_id)
-#     cart_list.delete()
-#     print(cart_item_id)
-#     return redirect('cart')
 
 @login_required
 def remove_from_cart(request, cart_item_id):
@@ -133,29 +102,13 @@ def home_list(request):
 	'high_prices': high_prices, })
 
 
+
+
+
+
 def display_order(request):
     return render(request, 'order.html')
 
-
-
-# @user_passes_test(lambda user: user.is_superuser)
-# def home_list(request):
-#     low_prices = 0
-#     middle_prices = 0
-#     high_prices = 0
-
-
-#     for home in HomeDcor.objects.all():
-#         if '0' <= str(home.price) <= '15':
-#             low_prices += 1
-#         elif '16' <= str(home.price) <= '40':
-#             middle_prices += 1
-#         else:
-#             high_prices += 1
-
-#     return render(request, 'Chart.html', {'low_prices': low_prices, 
-# 	'middle_prices': middle_prices, 
-# 	'high_prices': high_prices, })
 
 
 
