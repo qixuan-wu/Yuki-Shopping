@@ -1,0 +1,42 @@
+format：“7bfc839	qixuan-wu	Fri May 5 14:10:41 2023	Update README.md”
+format：“097cbc1	qixuan-wu	Fri May 5 13:53:31 2023	Update README.md”
+format：“37d9ecd	qixuan-wu	Fri May 5 13:44:05 2023	Add files via upload”
+format：“e206910	qixuan-wu	Fri May 5 12:57:24 2023	Update README.md”
+format：“4c9f4f0	qixuan-wu	Fri May 5 12:55:56 2023	Update README.md”
+format：“8042981	QIXUAN WU	Fri May 5 12:33:13 2023	 add error test”
+format：“9bd9823	QIXUAN WU	Fri May 5 12:19:13 2023	deleta”
+format：“fe1358f	QIXUAN WU	Fri May 5 11:47:30 2023	add admin”
+format：“90c56af	QIXUAN WU	Fri May 5 11:33:13 2023	render”
+format：“fe04935	QIXUAN WU	Fri May 5 11:28:13 2023	pip install gunicorn”
+format：“28ce7e7	QIXUAN WU	Fri May 5 11:04:11 2023	add whitenoise”
+format：“151f319	QIXUAN WU	Fri May 5 10:53:23 2023	delete gitignore”
+format：“2505645	QIXUAN WU	Fri May 5 10:10:53 2023	add test”
+format：“26e883d	QIXUAN WU	Fri May 5 10:09:58 2023	add test”
+format：“76a8804	qixuan-wu	Fri May 5 07:08:37 2023	Update README.md”
+format：“c3789fb	qixuan-wu	Fri May 5 07:08:15 2023	Update README.md”
+format：“52fedaa	QIXUAN WU	Fri May 5 07:06:49 2023	add error handling”
+format：“8e681e7	QIXUAN WU	Thu May 4 16:57:06 2023	add Visualisation”
+format：“6a4d5af	QIXUAN WU	Thu May 4 14:16:26 2023	add map”
+format：“3bdb7c5	QIXUAN WU	Thu May 4 12:33:29 2023	add error text”
+format：“817d0c0	QIXUAN WU	Thu May 4 10:48:39 2023	delete”
+format：“e6b7ef3	QIXUAN WU	Wed May 3 17:57:51 2023	finish shopping”
+format：“6ebd8a7	QIXUAN WU	Wed May 3 16:34:11 2023	add shopping car”
+format：“c616368	qixuan-wu	Tue May 2 16:55:10 2023	Update login.html”
+format：“b131c63	QIXUAN WU	Tue May 2 11:50:34 2023	finish login”
+format：“8210c1f	QIXUAN WU	Tue May 2 11:38:14 2023	can login”
+format：“d49d2a8	QIXUAN WU	Tue May 2 11:32:04 2023	change account”
+format：“c9d0bb8	QIXUAN WU	Mon May 1 16:17:43 2023	add search”
+format：“3cda862	QIXUAN WU	Mon May 1 15:18:13 2023	change web”
+format：“5d27b56	QIXUAN WU	Sun Apr 30 23:34:07 2023	change web”
+format：“b1fafe7	QIXUAN WU	Sun Apr 30 22:54:27 2023	add user creat account”
+format：“c261c56	QIXUAN WU	Sat Apr 29 03:46:27 2023	delate someting”
+format：“8cfb064	QIXUAN WU	Sat Apr 29 03:43:15 2023	add detail web and image”
+format：“04dd857	QIXUAN WU	Fri Apr 28 17:11:34 2023	change page”
+format：“100cdad	QIXUAN WU	Wed Apr 26 02:52:22 2023	add page”
+format：“ffc87eb	QIXUAN WU	Tue Apr 25 23:45:47 2023	Add new feature”
+format：“bb013d4	QIXUAN WU	Tue Apr 25 13:24:15 2023	connect”
+format：“9c52687	QIXUAN WU	Mon Apr 24 12:33:52 2023	connect”
+format：“c0947dd	QIXUAN WU	Sun Apr 23 20:41:31 2023	change database and add html”
+format：“fb97b6d	QIXUAN WU	Sun Apr 23 19:18:47 2023	add database”
+format：“048ab28	QIXUAN WU	Sun Apr 23 18:08:54 2023	add database”
+format：“bef38ba	qixuan-wu	Sun Apr 23 18:03:10 2023	Initial commit”
