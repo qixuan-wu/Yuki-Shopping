@@ -14,17 +14,19 @@ def display_index(request):
 
 def display_HomeDcor(request):
     query = request.GET.get('query')
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
     homedcor_list = HomeDcor.objects.all()
     if query:
-        homedcor_list = homedcor_list.filter(Q(rank__icontains=query) | Q(name__icontains=query))
+        homedcor_list = homedcor_list.filter(
+            Q(rank__icontains=query) | Q(name__icontains=query)
+        )
     paginator = Paginator(homedcor_list, 8)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'Dcor.html', {'page_obj': page_obj})
     if not page_obj:
         messages.warning(request, 'No results found.')
     return render(request, 'Dcor.html', {'page_obj': page_obj})
-
 
 def display_HomeDcorDetail(request, detail_rank):
     detail = get_object_or_404(HomeDecorDetail, rank=detail_rank)
@@ -131,7 +133,8 @@ def home_list(request):
 	'high_prices': high_prices, })
 
 
-
+def display_order(request):
+    return render(request, 'order.html')
 
 
 
