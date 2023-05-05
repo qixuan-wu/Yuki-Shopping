@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xjg2a7tqqw-$j-td&rsv8p8ic5(5h45ak4z(-_yp=8+o$n1yca
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['word-otherword.herokuapp.com','localhost', 'jumpclaudia-rainbowcake-8000.codio-box.uk']
+ALLOWED_HOSTS = ['word-otherword.herokuapp.com','localhost', 'jumpclaudia-rainbowcake-8000.codio-box.uk','yuki-shopping.onrender.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://jumpclaudia-rainbowcake-8000.codio-box.uk']
 
