@@ -21,6 +21,7 @@ Yuki-Shopping is an online shopping site whose business interests include e-comm
  3. We install that with
  ```
     pip install django
+    pip install whitenoise
     pip install django-leaflet
 ```
 To make the images loadable you also need the plug-in for loading images
