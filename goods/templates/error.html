@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>HomeDcorChart</title>
+    <style>
+        #centered-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
 </head>
-<style>
-    #chart-wrapper {
-            display: inline-block;
-            position: relative;
-            width: 400px;
-			margin-Top: 5%;
-			margin-left: 35%;
-            float: left;
-    }
-</style>
 <body>
 
-<div style="text-align: center;">
-    <h1>HomeDcor Price Tracking</h1>
+<div id="centered-text">
+    <h1>You need to be logged in to do so, click on <a href="{% url 'login' %}">Login.</a></h1>
 </div>
 
-<h1>You do not have permission to view this page.</h1>
-
+</body>
+</html>

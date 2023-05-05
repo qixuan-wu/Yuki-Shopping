@@ -34,7 +34,9 @@ def display_HomeDcorDetail(request, detail_rank):
     return render(request, 'Dcor_detail.html', {'detail': detail, 'sightdetails': sightdetails})
 
 
-@login_required
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url='/error/')
 def add_to_cart(request):
     if request.method == 'POST':
         try:
@@ -62,6 +64,7 @@ def add_to_cart(request):
         cart_list=cart.objects.all()
         total=sum([item.price * item.quantity for item in cart_list])
         return render(request, 'shoppingcar.html', {'cart_list': cart_list, 'total': total})
+
 
 
 @login_required
@@ -103,13 +106,13 @@ def home_list(request):
 
 
 
-
-
-
 def display_order(request):
     return render(request, 'order.html')
 
 
+
+def display_error(request):
+    return render(request, 'error.html')
 
 
 
