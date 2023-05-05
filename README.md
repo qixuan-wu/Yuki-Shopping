@@ -39,7 +39,7 @@ Then set your account password so you have everything you need to be an administ
 
 Administrators can see the product data and transaction records in the back office.
 
-At the same time the administrator can see the price tracking chart via the price tracking item in the navigation bar to see which stage of the product the user bought more once the point
+Also, administrators can see the price tracking graph via the price tracking item in the navigation bar to see which price range users prefer
 
 ## 4.   *Start the Server*
 We do this using the manage.py  command tool by entering this command in the terminal:
